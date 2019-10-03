@@ -33,7 +33,7 @@
         this.grade = grade;
     };
     
-    const Haris = new Student ('Haris', A)
+    //const Haris = new Student ('Haris', A)
     const Bojan = new Student ('Bojan', B)
 
         //Prototypes (could be PROPERTIES or METHODS)
@@ -77,7 +77,7 @@ Each node has: 1.Value 2.nextNode 3.previousNode
 
         function LinkedList () {
             this.head = null;
-            this.teil = null;
+            this.tail = null;
         }
 
         const User1 = new LinkedList ();
@@ -89,7 +89,6 @@ Each node has: 1.Value 2.nextNode 3.previousNode
             this.prev = prev;
         }
 
-        const Node34 = new Node ();
 
         //node PROTOTYPE FUNCTION
 
@@ -115,7 +114,7 @@ Each node has: 1.Value 2.nextNode 3.previousNode
                     //when 1 time adding node: head node is also teil node
                 
                 }else{
-                    this.teil = newNode;
+                    this.tail = newNode;
 
                 }
 
@@ -123,10 +122,59 @@ Each node has: 1.Value 2.nextNode 3.previousNode
              this.head = newNode;
         }
 
+//The use of Add to Head
+-----------------------------------------------------------------------------------
+function LinkedList () {
+    this.head = null;
+    this.tail = null;
+}
+
+
+function Node (value, next, prev) {
+    this.value = value;
+    this.next = next;
+    this.prev = prev;
+}
+
+
+LinkedList.prototype.addToHead = function (value) {
     
+    const newNode = new Node (value, this.head, null);
 
-       
+    if (this.head) {
+        this.head.prev = newNode;
+    }else{
+        this.tail = newNode;
+    }
+    this.head = newNode;
+}
 
+const ll = new LinkedList ();
+
+ll.addToHead (100); 
+ll.addToHead (200);
+ll.addToHead (200);
+
+
+//Add to Teil --- opposite to Add to Head
+
+LinkedList.prototype.addToTeil = function (value) {
+
+    const newNode = new Node (value, null, this.tail);
+
+    if (this.tail) {
+        this.tail.next = newNode; //if not empty)
+    }else{
+        this.head = newNode; //empty
+    }
+    this.tail = newNode;
+}
+
+const myLL = new LinkedList ();
+
+myLL.addToTeil (10);
+myLL.addToTeil (20);
+myLL.addToTeil (30);
 
 
 
