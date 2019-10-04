@@ -176,6 +176,37 @@ myLL.addToTeil (10);
 myLL.addToTeil (20);
 myLL.addToTeil (30);
 
+//Remove Head
+
+LinkedList.prototype.removeHead = function () { //no parameters
+    if (!this.head) return null; //if linked list is empty return null
+    const valHead = this.head.value; //create value variable of the head which want to remove
+    this.head = this.head.next //create new head node-move the head pointer
+    if (this.head) {
+        this.head.prev = null; //if not empty
+    }else{
+        this.tail = null; //if empty
+    }
+    return valHead;
+}
+
+const ll2 = new LinkedList ();
+
+ll2.removeHead ();
 
 
+LinkedList.prototype.removeTail = function () { //no parameters
+    if (!this.tail) return null; //if linked list is empty
+    const valTail = this.tail.value;  //create tail.value variable
+    this.tail = this.tail.prev; //move the tail pointer
+    if (this.tail) {
+        this.tail.next = null; //not empty
+    }else{
+        this.head = null; //empty
+    }
+    return valTail;
+}
+
+const ll3 = new LinkedList ();
+ll3.removeTail ();
     
