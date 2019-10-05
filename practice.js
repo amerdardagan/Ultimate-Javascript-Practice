@@ -60,10 +60,13 @@
     Haris.getStudentInfo() //kod METODA mora iči () jer je funkcija
     Bojan.getStudentInfo()
 
-/*LINKED LIST - It is a list of elements called nodes that are connected together or linked together in a single file line.
+/*LINKED LIST - It is a list of elements called nodes that are connected together or linked together
+ in a single file line.
 -There are two types of linked lists: a singly linked list and a doubly linked list.
--Singly node only has reference to the node after it and in a doubly linked list has reference to after it but also before it.
--The linked list itself as a whole only needs to know about two nodes: the head node and the tell node and it keeps a reference to the head pointer and the tail pointer.
+-Singly node only has reference to the node after it and in a doubly linked list has reference to after it 
+but also before it.
+-The linked list itself as a whole only needs to know about two nodes: the head node and the tell node 
+and it keeps a reference to the head pointer and the tail pointer.
 
 -The operations that we are going to want to perform are: adding a node to the head of the linked list, adding a node to the tail of the linked list, 
 removing the head and removing the tail, searching- we're gonna want to be able to search through our linked
@@ -209,4 +212,27 @@ LinkedList.prototype.removeTail = function () { //no parameters
 
 const ll3 = new LinkedList ();
 ll3.removeTail ();
+
+//Search Method--want to check if piece of data is in our linked list
+//if not present (return null)
+//if yes return that value
+
+LinkedList.prototype.search = function (searchValue){
+    const currentNode = this.head         //we should start search from head or tail node---becomes current
+    while (currentNode) {  // always true unless null
+        currentNode = currentNode.next; 
+        if (currentNode.value === searchValue ) {
+            return currentNode.value; //if true return value
+        }
+
+    }
+    return null; //if false return null
+}
+    const myLL = new LinkedList ();
+
+    myLL.addToHead (29);
+    myLL.addToHead ('hello');
+    myLL.addToTail (59);
+    myLL.addToTail ('ciao');
+
     
