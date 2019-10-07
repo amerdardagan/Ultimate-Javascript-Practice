@@ -2,6 +2,8 @@ document.getElementById ('button1').addEventListener('click', loadTxt);
 
 document.getElementById ('button2').addEventListener('click', loadJSON);
 
+document.getElementById ('button3').addEventListener('click', loadREST);
+
 //Load TXT
 
 //when working with FETCH API (accessing the PROMISE)
@@ -27,7 +29,7 @@ function loadTxt () { //its a promise
     })
 }
 
-//LOad JSON
+//LOad and print response from JSON
 
 function loadJSON () {
     fetch ('employees.json') //access json 
@@ -48,9 +50,43 @@ function loadJSON () {
 
         //print to HTML
         document.getElementById ('result').innerHTML = html;
-            
+
+    })
+
+    .catch (function (error){
+        console.log (error);
+    })
+}
+
+//Load and print response from REST API
+
+function loadREST () {
+    fetch ('https://picsum.photos/list')
+
+    .then (function (response) { //type of response?
+        return response.json () //i sa REST API isto json
+    })
+
+    .then(function (data) {
+        console.log (data);
+
+        let html = '';
+        data.forEach (function (image) { //make a url to be a link in anew window
+            html += `<li>
+                <a target="_blank" href="${image.post_url}">View Image</a> 
+                ${image.author} 
+            </li>`
+        })
+        document.getElementById ('result').innerHTML = html;
+    })
+
+    .catch (function (error){
+        console.log (error);
+    })
+
+    
     
 
 
-    })
+
 }
